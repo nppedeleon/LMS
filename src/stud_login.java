@@ -1,14 +1,14 @@
 import java.awt.Frame;
 import java.sql.*;
 import javax.swing.*;
-public class login extends javax.swing.JFrame{
+public class stud_login extends javax.swing.JFrame{
       Connection cn;
       PreparedStatement ps;
       ResultSet res;
     /**
      * Creates new form login
      */
-    public login(){
+    public stud_login(){
         initComponents();
         
     }
@@ -24,7 +24,11 @@ public class login extends javax.swing.JFrame{
 
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -35,7 +39,9 @@ public class login extends javax.swing.JFrame{
         btncancel = new javax.swing.JButton();
         btnlogin = new javax.swing.JButton();
         errormsg = new javax.swing.JLabel();
+        newuser = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,13 +67,31 @@ public class login extends javax.swing.JFrame{
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 20, 70, 30));
 
-        jLabel1.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Footlight MT Light", 3, 80)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Administrator Page");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 630, 100));
+        jLabel1.setText("Welcome to");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 470, 120));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sony\\Desktop\\CCS\\Systems\\Backgrounds\\admintitle.png")); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 110));
+        jLabel12.setFont(new java.awt.Font("Footlight MT Light", 3, 80)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sony\\Desktop\\CCS\\Systems\\Backgrounds\\neulogo.jpg")); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 200, 200));
+
+        jLabel13.setFont(new java.awt.Font("Footlight MT Light", 3, 80)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sony\\Desktop\\CCS\\Systems\\Backgrounds\\whitebg.png")); // NOI18N
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 240, 240));
+
+        jLabel11.setFont(new java.awt.Font("Footlight MT Light", 3, 80)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("NEU Library");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 470, 120));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sony\\Desktop\\CCS\\Systems\\Backgrounds\\adminborder.png")); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 500, 520, 80));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sony\\Desktop\\CCS\\Systems\\Backgrounds\\adminborder.png")); // NOI18N
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 400, 520, 80));
 
         jLabel6.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,7 +126,7 @@ public class login extends javax.swing.JFrame{
                 btncancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 80, 30));
+        jPanel1.add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 80, 30));
 
         btnlogin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnlogin.setText("LOGIN");
@@ -111,38 +135,54 @@ public class login extends javax.swing.JFrame{
                 btnloginActionPerformed(evt);
             }
         });
-        jPanel1.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 80, 30));
+        jPanel1.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 80, 30));
 
         errormsg.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         errormsg.setForeground(new java.awt.Color(255, 0, 0));
         jPanel1.add(errormsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 290, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 390, 220));
+        newuser.setText("NEW USER?");
+        newuser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newuserActionPerformed(evt);
+            }
+        });
+        jPanel1.add(newuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 100, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 390, 230));
 
         jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sony\\Desktop\\CCS\\Systems\\Backgrounds\\adminborder.png")); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 410, 240));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 210, 410, 250));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sony\\Desktop\\CCS\\Systems\\Backgrounds\\adminbg.png")); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1300, 640));
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sony\\Desktop\\CCS\\Systems\\Backgrounds\\greenbg.png")); // NOI18N
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 200, 430, 270));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sony\\Desktop\\CCS\\Systems\\Backgrounds\\books.jpg")); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 730));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-        cn = sql.myConnection();
-        String sel="Select * from admin where username=? and password=?";
+        
         try{
+            cn = sql.myConnection();
+            String sel="Select * from student where username=? and password=?";
             ps=cn.prepareStatement(sel);
             ps.setString(1, uname.getText());
             ps.setString(2, String.valueOf(pword.getPassword()));
             res=ps.executeQuery();
             
             if(res.next()){
-                admin a = new admin();
+                cn = sql.myConnection();
+                String list = "INSERT INTO studentlogin (username) VALUES ('"+uname.getText()+"')";
+                ps=cn.prepareStatement(list);
+                ps.executeUpdate();
+                
+                stud a = new stud();
                 a.setVisible(true);
                 dispose();
-
             }
             else
                 errormsg.setText("*Invalid Username or Password, Please try again.");
@@ -171,12 +211,48 @@ public class login extends javax.swing.JFrame{
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void newuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newuserActionPerformed
+       newuser a = new newuser();
+       a.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_newuserActionPerformed
     
     /**
      * @param args the command line arguments
      */
-    
-    
+    public static void main(String args[]) {
+      
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new login().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancel;
@@ -184,6 +260,10 @@ public class login extends javax.swing.JFrame{
     private javax.swing.JLabel errormsg;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -191,7 +271,9 @@ public class login extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton newuser;
     private javax.swing.JPasswordField pword;
     private javax.swing.JTextField uname;
     // End of variables declaration//GEN-END:variables

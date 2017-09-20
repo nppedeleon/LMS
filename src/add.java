@@ -1,17 +1,27 @@
 import java.awt.Frame;
+import java.awt.event.KeyEvent;
 import java.sql.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.*;
 public class add extends javax.swing.JFrame{
       Connection cn;
       PreparedStatement ps;
       ResultSet res;
+      
+   
     /**
      * Creates new form login
      */
     public add(){
         initComponents();
         
+        
     }
+    
+    
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -22,19 +32,42 @@ public class add extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        button_homeadmin = new javax.swing.JButton();
-        button_homeadmin1 = new javax.swing.JButton();
-        button_homeadmin2 = new javax.swing.JButton();
-        button_homeadmin3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        admin_delbtn = new javax.swing.JButton();
+        admin_homebtn = new javax.swing.JButton();
+        admin_editbtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        admin_addauthor = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        admin_addtitle = new javax.swing.JTextField();
+        admin_addpublisher = new javax.swing.JTextField();
+        admin_addsubtitle = new javax.swing.JTextField();
+        admin_addlanguage = new javax.swing.JComboBox();
+        cancel = new javax.swing.JButton();
+        clear = new javax.swing.JButton();
+        admin_buttonadd = new javax.swing.JButton();
+        errorlang = new javax.swing.JLabel();
+        errormsg = new javax.swing.JLabel();
+        errortitle = new javax.swing.JLabel();
+        errorsubtitle = new javax.swing.JLabel();
+        errorauthor = new javax.swing.JLabel();
+        errorpub = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        admin_masterbtn = new javax.swing.JButton();
+        c = new javax.swing.JButton();
+        admin_reqbtn1 = new javax.swing.JButton();
+        add = new javax.swing.JButton();
+        b = new javax.swing.JButton();
+        s = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,42 +82,6 @@ public class add extends javax.swing.JFrame{
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        button_homeadmin.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        button_homeadmin.setText("REQUESTS");
-        button_homeadmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_homeadminActionPerformed(evt);
-            }
-        });
-        getContentPane().add(button_homeadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 170, 50));
-
-        button_homeadmin1.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        button_homeadmin1.setText("ADD STUDENT");
-        button_homeadmin1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_homeadmin1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(button_homeadmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 170, 50));
-
-        button_homeadmin2.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        button_homeadmin2.setText("HOME");
-        button_homeadmin2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_homeadmin2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(button_homeadmin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 170, 50));
-
-        button_homeadmin3.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        button_homeadmin3.setText("VIEW ALL BOOKS");
-        button_homeadmin3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_homeadmin3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(button_homeadmin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 170, 50));
-
         jButton1.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         jButton1.setText("LOGOUT");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +90,33 @@ public class add extends javax.swing.JFrame{
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 20, 110, 30));
+
+        admin_delbtn.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        admin_delbtn.setText("DELETE BOOK");
+        admin_delbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admin_delbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(admin_delbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 170, 50));
+
+        admin_homebtn.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        admin_homebtn.setText("HOME");
+        admin_homebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admin_homebtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(admin_homebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 170, 50));
+
+        admin_editbtn.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        admin_editbtn.setText("EDIT BOOK");
+        admin_editbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admin_editbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(admin_editbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 170, 50));
 
         jLabel1.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,17 +130,99 @@ public class add extends javax.swing.JFrame{
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
-        jLabel3.setText("Author :");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 50, -1));
-
         jLabel7.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
-        jLabel7.setText("Title :");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 50, -1));
+        jLabel7.setText("SUBTITLE:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 70, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 410, 430));
+        jLabel8.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel8.setText("TITLE:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 50, -1));
 
-        jLabel6.setFont(new java.awt.Font("Cambria", 0, 36)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel9.setText("AUTHOR:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 60, -1));
+
+        jLabel10.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel10.setText("PUBLISHER:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 80, -1));
+
+        jLabel11.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel11.setText("LANGUAGE:");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 80, -1));
+
+        admin_addauthor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                admin_addauthorKeyTyped(evt);
+            }
+        });
+        jPanel2.add(admin_addauthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 240, -1));
+
+        jLabel12.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        jLabel12.setText("Please fill up following Information:");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel2.add(admin_addtitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 430, -1));
+
+        admin_addpublisher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admin_addpublisherActionPerformed(evt);
+            }
+        });
+        jPanel2.add(admin_addpublisher, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 430, -1));
+        jPanel2.add(admin_addsubtitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 430, -1));
+
+        admin_addlanguage.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "English", "Filipino" }));
+        admin_addlanguage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admin_addlanguageActionPerformed(evt);
+            }
+        });
+        jPanel2.add(admin_addlanguage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 90, -1));
+
+        cancel.setText("CANCEL");
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 100, 50));
+
+        clear.setText("CLEAR");
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
+        jPanel2.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 100, 50));
+
+        admin_buttonadd.setText("ADD BOOK");
+        admin_buttonadd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admin_buttonaddActionPerformed(evt);
+            }
+        });
+        jPanel2.add(admin_buttonadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 100, 50));
+
+        errorlang.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(errorlang, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 10, 10));
+
+        errormsg.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(errormsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
+
+        errortitle.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(errortitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 64, 10, 10));
+
+        errorsubtitle.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(errorsubtitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 10, 10));
+
+        errorauthor.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(errorauthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 10, 10));
+
+        errorpub.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(errorpub, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 10, 10));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 570, 370));
+
+        jLabel6.setFont(new java.awt.Font("Cambria", 0, 48)); // NOI18N
         jLabel6.setText("Add Book");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
@@ -124,6 +230,60 @@ public class add extends javax.swing.JFrame{
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 1080, 620));
+
+        admin_masterbtn.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        admin_masterbtn.setText("MASTERLIST");
+        admin_masterbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admin_masterbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(admin_masterbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 170, 50));
+
+        c.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        c.setText("COUNTER");
+        c.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cActionPerformed(evt);
+            }
+        });
+        getContentPane().add(c, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 170, 50));
+
+        admin_reqbtn1.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        admin_reqbtn1.setText("REQUESTS");
+        admin_reqbtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admin_reqbtn1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(admin_reqbtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 170, 50));
+
+        add.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        add.setText("ADD BOOK");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
+        getContentPane().add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 170, 50));
+
+        b.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        b.setText("BOOK MONITOR");
+        b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bActionPerformed(evt);
+            }
+        });
+        getContentPane().add(b, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 170, 50));
+
+        s.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        s.setText("STUDENT INFO");
+        s.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sActionPerformed(evt);
+            }
+        });
+        getContentPane().add(s, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 170, 50));
 
         jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sony\\Desktop\\CCS\\Systems\\Backgrounds\\adminbg.png")); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1300, 640));
@@ -137,33 +297,172 @@ public class add extends javax.swing.JFrame{
         this.setExtendedState(this.getExtendedState()|Frame.MAXIMIZED_BOTH);
     }//GEN-LAST:event_formWindowOpened
 
+    private void admin_delbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_delbtnActionPerformed
+        delete a = new delete();
+       a.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_admin_delbtnActionPerformed
+
+    private void admin_homebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_homebtnActionPerformed
+        admin a = new admin();
+        a.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_admin_homebtnActionPerformed
+
+    private void admin_editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_editbtnActionPerformed
+        view a = new view();
+        a.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_admin_editbtnActionPerformed
+
+    private void admin_addlanguageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_addlanguageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_admin_addlanguageActionPerformed
+
+    private void admin_addpublisherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_addpublisherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_admin_addpublisherActionPerformed
+
+    private void admin_buttonaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_buttonaddActionPerformed
+        cn=sql.myConnection();
+        String name = admin_addauthor.getText().toString();
+        try{
+          
+            if(admin_addtitle.getText().isEmpty()){
+                errormsg.setText("Please Fill-up this Information.");
+                errortitle.setText("*");
+            } else{
+                
+                errortitle.setText("");
+            }
+             if(admin_addsubtitle.getText().isEmpty()){
+                errormsg.setText("Please Fill-up this Information.");
+                errorsubtitle.setText("*");
+            } else{
+                
+                errorsubtitle.setText("");
+            }
+              if(admin_addauthor.getText().isEmpty()){
+                errormsg.setText("Please Fill-up this Information.");
+                errorauthor.setText("*");
+              }  
+             else{
+                errorauthor.setText("");
+            } 
+
+              
+               if(admin_addpublisher.getText().isEmpty()){
+                errormsg.setText("Please Fill-up this Information.");
+                errorpub.setText("*");
+            } else{
+                
+                errorpub.setText("");
+            }
+               if(admin_addlanguage.getSelectedItem() == " "){
+                errormsg.setText("Please Fill-up this information.");
+                errorlang.setText("*");
+            } else{
+                
+                errorlang.setText("");
+            }
+               if(errortitle.getText().isEmpty() & errorsubtitle.getText().isEmpty() & errorauthor.getText().isEmpty()& errorpub.getText().isEmpty() & errorlang.getText().isEmpty()){
+                   errormsg.setText("");
+               }
+                if(!name.matches("^[a-zA-Z ]+")){
+                   errormsg.setText("Please Fill-up with correct information.");
+                   errorauthor.setText("*");
+               }
+             
+                if(errormsg.getText().isEmpty()){
+                String list = "INSERT INTO masterlist (title, subtitle, author, publisher, language) VALUES ('"+admin_addtitle.getText()+"','"+admin_addsubtitle.getText()+"','"+admin_addauthor.getText()+"','"+admin_addpublisher.getText()+"','"+admin_addlanguage.getSelectedItem()+"')";
+                ps=cn.prepareStatement(list);
+                ps.executeUpdate();
+                
+                JOptionPane.showMessageDialog(null, "Book Added Succefully!");
+                admin_addtitle.setText("");
+                admin_addsubtitle.setText("");
+                admin_addauthor.setText("");
+                admin_addpublisher.setText("");
+                admin_addlanguage.setSelectedItem(" ");
+            } 
+            }
+        
+         catch(Exception e){
+                
+         }
+       
+        
+    }//GEN-LAST:event_admin_buttonaddActionPerformed
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+        admin a = new admin();
+        a.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_cancelActionPerformed
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+                admin_addtitle.setText("");
+                admin_addsubtitle.setText("");
+                admin_addauthor.setText("");
+                admin_addpublisher.setText("");
+                admin_addlanguage.setSelectedItem(" ");
+                errortitle.setText("");
+                errorsubtitle.setText("");
+                errorauthor.setText("");
+                errorpub.setText("");
+                errorlang.setText("");
+                errormsg.setText("");
+                
+    }//GEN-LAST:event_clearActionPerformed
+
+    private void admin_masterbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_masterbtnActionPerformed
+        masterlist a = new masterlist();
+        a.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_admin_masterbtnActionPerformed
+
+    private void cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActionPerformed
+       counter a = new counter();
+       a.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_cActionPerformed
+
+    private void admin_addauthorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_admin_addauthorKeyTyped
+      
+        
+    }//GEN-LAST:event_admin_addauthorKeyTyped
+
+    private void admin_reqbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_reqbtn1ActionPerformed
+        adminstatus a = new adminstatus();
+        a.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_admin_reqbtn1ActionPerformed
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        add a = new add();
+       a.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_addActionPerformed
+
+    private void bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActionPerformed
+        monitor a = new monitor();
+       a.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_bActionPerformed
+
+    private void sActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sActionPerformed
+        admininfo a = new admininfo();
+       a.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_sActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         login a = new login();
         a.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void button_homeadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_homeadminActionPerformed
-        
-    }//GEN-LAST:event_button_homeadminActionPerformed
-
-    private void button_homeadmin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_homeadmin1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button_homeadmin1ActionPerformed
-
-    private void button_homeadmin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_homeadmin2ActionPerformed
-        admin a = new admin();
-        a.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_button_homeadmin2ActionPerformed
-
-    private void button_homeadmin3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_homeadmin3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button_homeadmin3ActionPerformed
-    
-    /**
-     * @param args the command line arguments
-     */
+   
+   
     public static void main(String args[]) {
       
         /* Set the Nimbus look and feel */
@@ -197,20 +496,45 @@ public class add extends javax.swing.JFrame{
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_homeadmin;
-    private javax.swing.JButton button_homeadmin1;
-    private javax.swing.JButton button_homeadmin2;
-    private javax.swing.JButton button_homeadmin3;
+    private javax.swing.JButton add;
+    private javax.swing.JTextField admin_addauthor;
+    private javax.swing.JComboBox admin_addlanguage;
+    private javax.swing.JTextField admin_addpublisher;
+    private javax.swing.JTextField admin_addsubtitle;
+    private javax.swing.JTextField admin_addtitle;
+    private javax.swing.JButton admin_buttonadd;
+    private javax.swing.JButton admin_delbtn;
+    private javax.swing.JButton admin_editbtn;
+    private javax.swing.JButton admin_homebtn;
+    private javax.swing.JButton admin_masterbtn;
+    private javax.swing.JButton admin_reqbtn1;
+    private javax.swing.JButton b;
+    private javax.swing.JButton c;
+    private javax.swing.JButton cancel;
+    private javax.swing.JButton clear;
+    private javax.swing.JLabel errorauthor;
+    private javax.swing.JLabel errorlang;
+    private javax.swing.JLabel errormsg;
+    private javax.swing.JLabel errorpub;
+    private javax.swing.JLabel errorsubtitle;
+    private javax.swing.JLabel errortitle;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton s;
     // End of variables declaration//GEN-END:variables
 }
+   

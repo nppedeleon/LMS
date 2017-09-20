@@ -2,14 +2,15 @@ import datechooser.model.DateChoose;
 import java.awt.Frame;
 import java.sql.*;
 import javax.swing.*;
-public class admin extends javax.swing.JFrame{
+import net.proteanit.sql.DbUtils;
+public class monitor extends javax.swing.JFrame{
       Connection cn;
       PreparedStatement ps;
       ResultSet res;
     /**
      * Creates new form login
      */
-    public admin(){
+    public monitor(){
         initComponents();
         
     }
@@ -23,26 +24,31 @@ public class admin extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        home = new javax.swing.JButton();
+        c = new javax.swing.JButton();
         admin_addbtn = new javax.swing.JButton();
         admin_masterbtn = new javax.swing.JButton();
         admin_editbtn = new javax.swing.JButton();
         admin_delbtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        admin_reqbtn1 = new javax.swing.JButton();
+        home = new javax.swing.JButton();
         admin_reqbtn2 = new javax.swing.JButton();
-        admin_reqbtn4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        admin_reqbtn3 = new javax.swing.JButton();
+        s = new javax.swing.JButton();
+        b = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        bookmonitor = new javax.swing.JTable();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -59,14 +65,14 @@ public class admin extends javax.swing.JFrame{
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        home.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        home.setText("HOME");
-        home.addActionListener(new java.awt.event.ActionListener() {
+        c.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        c.setText("COUNTER");
+        c.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeActionPerformed(evt);
+                cActionPerformed(evt);
             }
         });
-        getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 170, 50));
+        getContentPane().add(c, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 170, 50));
 
         admin_addbtn.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         admin_addbtn.setText("ADD BOOK");
@@ -113,32 +119,23 @@ public class admin extends javax.swing.JFrame{
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 20, 110, 30));
 
-        admin_reqbtn1.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        admin_reqbtn1.setText("COUNTER");
-        admin_reqbtn1.addActionListener(new java.awt.event.ActionListener() {
+        home.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        home.setText("HOME");
+        home.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                admin_reqbtn1ActionPerformed(evt);
+                homeActionPerformed(evt);
             }
         });
-        getContentPane().add(admin_reqbtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 170, 50));
+        getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 170, 50));
 
         admin_reqbtn2.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        admin_reqbtn2.setText("STUDENT INFO");
+        admin_reqbtn2.setText("REQUESTS");
         admin_reqbtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 admin_reqbtn2ActionPerformed(evt);
             }
         });
-        getContentPane().add(admin_reqbtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 170, 50));
-
-        admin_reqbtn4.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        admin_reqbtn4.setText("REQUESTS");
-        admin_reqbtn4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                admin_reqbtn4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(admin_reqbtn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 170, 50));
+        getContentPane().add(admin_reqbtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 170, 50));
 
         jLabel1.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -148,47 +145,85 @@ public class admin extends javax.swing.JFrame{
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sony\\Desktop\\CCS\\Systems\\Backgrounds\\admintitle.png")); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 110));
 
-        admin_reqbtn3.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        admin_reqbtn3.setText("BOOK MONITOR");
-        admin_reqbtn3.addActionListener(new java.awt.event.ActionListener() {
+        s.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        s.setText("STUDENT INFO");
+        s.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                admin_reqbtn3ActionPerformed(evt);
+                sActionPerformed(evt);
             }
         });
-        getContentPane().add(admin_reqbtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 170, 50));
+        getContentPane().add(s, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 170, 50));
+
+        b.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        b.setText("BOOK MONITOR");
+        b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bActionPerformed(evt);
+            }
+        });
+        getContentPane().add(b, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 170, 50));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel8.setText("Add Book, Edit Book, View Masterlist, Delete Book, Approve or Decline Borrow Requests,");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
+        bookmonitor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel9.setText("Manage Pick up and Drop Off Book from Counter Page, Monitor Book from Book Monitor Page,");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, -1, -1));
+            },
+            new String [] {
+                "Date Borrowed", "Student ID", "Book No", "Title", "Returning Date", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(bookmonitor);
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel12.setText("Always logout by clicking logout button everytime you leave your PC.");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, -1, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 920, 270));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel10.setText("and View and Manage Students from Student Information Page.");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel14.setText("Status :");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 440, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel11.setText("For any problem in the system contact System Administrator for details. Click buttons under menu to select operations. ");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setText("Details :");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Cambria", 0, 48)); // NOI18N
-        jLabel6.setText("Welcome!");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, -1, -1));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel9.setText("Student ID :");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel7.setText("NEU Library Management System Administrator Page, as an Admin you can :");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, 30));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel10.setText("Title :");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel11.setText("Returning Date :");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel12.setText("Book No :");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel13.setText("Date Borrowed :");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton2.setText("Unreturned Books");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 480, 140, 40));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Click here to view");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 500, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel8.setText("Book Monitoring");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/whitebg.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 920, 390));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 920, 450));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/admininnerbg.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -205,6 +240,7 @@ public class admin extends javax.swing.JFrame{
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setExtendedState(this.getExtendedState()|Frame.MAXIMIZED_BOTH);
+        fetch();
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -213,11 +249,11 @@ public class admin extends javax.swing.JFrame{
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
-        admin a = new admin();
+    private void cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActionPerformed
+        counter a = new counter();
         a.setVisible(true);
         dispose();
-    }//GEN-LAST:event_homeActionPerformed
+    }//GEN-LAST:event_cActionPerformed
 
     private void admin_addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_addbtnActionPerformed
        add a = new add();
@@ -243,50 +279,102 @@ public class admin extends javax.swing.JFrame{
        dispose();
     }//GEN-LAST:event_admin_delbtnActionPerformed
 
-    private void admin_reqbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_reqbtn1ActionPerformed
-        counter a = new counter();
-        a.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_admin_reqbtn1ActionPerformed
+    private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
+       admin a = new admin();
+       a.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_homeActionPerformed
 
     private void admin_reqbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_reqbtn2ActionPerformed
-        admininfo a = new admininfo();
-        a.setVisible(true);
-        dispose();
+       adminstatus a = new adminstatus();
+       a.setVisible(true);
+       dispose();
     }//GEN-LAST:event_admin_reqbtn2ActionPerformed
 
-    private void admin_reqbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_reqbtn4ActionPerformed
-       adminstatus a = new adminstatus();
-        a.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_admin_reqbtn4ActionPerformed
+    private void sActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sActionPerformed
+        // TODO add your handling code here:
+        admininfo a = new admininfo();
+       a.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_sActionPerformed
 
-    private void admin_reqbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_reqbtn3ActionPerformed
-        monitor a = new monitor();
-        a.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_admin_reqbtn3ActionPerformed
-    
+    private void bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActionPerformed
+        // TODO add your handling code here:admin a = new admin();
+       monitor a = new monitor();
+       a.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_bActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       unreturned a = new unreturned();
+       a.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    public void fetch(){
+        try{
+            cn=DriverManager.getConnection("jdbc:mysql://localhost/lms","root","");
+            String q = "Select date as 'Date Borrowed' ,  user as 'User', booknumber as 'Book No' , title as 'Title' , returningdate as 'Returning Date' from bookmonitor order by date desc";
+            ps = cn.prepareStatement(q);
+            res=ps.executeQuery();
+            bookmonitor.setModel(DbUtils.resultSetToTableModel(res));
+        } 
+        catch(Exception e){
+        }
+    }
     /**
      * @param args the command line arguments
      */
-    
+    public static void main(String args[]) {
+      
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new login().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton admin_addbtn;
     private javax.swing.JButton admin_delbtn;
     private javax.swing.JButton admin_editbtn;
     private javax.swing.JButton admin_masterbtn;
-    private javax.swing.JButton admin_reqbtn1;
     private javax.swing.JButton admin_reqbtn2;
-    private javax.swing.JButton admin_reqbtn3;
-    private javax.swing.JButton admin_reqbtn4;
+    private javax.swing.JButton b;
+    private javax.swing.JTable bookmonitor;
+    private javax.swing.JButton c;
     private javax.swing.JButton home;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -296,5 +384,7 @@ public class admin extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton s;
     // End of variables declaration//GEN-END:variables
 }
